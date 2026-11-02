@@ -1,10 +1,14 @@
 import {
   Aperture,
+  Building2,
+  CalendarCheck,
   Camera,
   Clapperboard,
   Guitar,
+  LayoutDashboard,
   Mic,
   Palette,
+  PlusCircle,
   Presentation,
   Speaker,
   Sparkles,
@@ -22,6 +26,30 @@ export const navItems: NavItem[] = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "About Us", href: "/about" },
 ];
+
+export type AccountMenuItem = NavItem & {
+  icon: LucideIcon;
+};
+
+/** Links shown in the signed-in user menu of the navbar. */
+export const accountMenuItems: AccountMenuItem[] = [
+  { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { label: "Add New Studio", href: "/dashboard/studios/new", icon: PlusCircle },
+  { label: "My Studio Listings", href: "/dashboard/studios", icon: Building2 },
+  { label: "My Bookings", href: "/dashboard/bookings", icon: CalendarCheck },
+];
+
+/**
+ * Active state for account menu links. `/dashboard` owns the whole section,
+ * the other routes only highlight on an exact match so
+ * `/dashboard/studios/new` does not light up "My Studio Listings" as well.
+ */
+export function isAccountItemActive(pathname: string, href: string) {
+  if (href === "/dashboard") {
+    return pathname === "/dashboard" || pathname.startsWith("/dashboard/");
+  }
+  return pathname === href;
+}
 
 export type Studio = {
   id: string;
