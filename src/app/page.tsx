@@ -1,13 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { ArrowUpIcon } from "lucide-react"
+import { Banner } from "@/components/home/banner";
+import { Categories } from "@/components/home/categories";
+import { FeaturedStudios } from "@/components/home/featured-studios";
+import { HowBookingWorks } from "@/components/home/how-booking-works";
+import { HostGuarantee } from "@/components/home/host-guarantee";
 
 export default function Home() {
   return (
-     <div className="flex gap-2">
-      <Button className="rounded-full">Get Started</Button>
-      <Button variant="outline" size="icon" className="rounded-full">
-        <ArrowUpIcon />
-      </Button>
-    </div>
+    <>
+      <Banner />
+      <FeaturedStudios />
+      <Categories />
+      <HowBookingWorks />
+      <HostGuarantee />
+    </>
   );
 }
